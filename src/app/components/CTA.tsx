@@ -1,5 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 import { useState } from 'react';
+import { Link } from 'react-router';
 
 export function CTA() {
   const [email, setEmail] = useState('');
@@ -15,10 +16,10 @@ export function CTA() {
         <div className="rounded-3xl bg-white p-8 text-center shadow-[0_10px_40px_rgba(0,0,0,0.06)] sm:p-12">
           <div className="mb-8">
             <h2 className="mb-4 text-3xl text-[#333333] md:text-4xl">
-              지금 바로 시작하세요
+              지금 바로 시작해요
             </h2>
             <p className="text-lg text-[#888888]">
-              Lento와 함께하는 여정, 오늘부터 시작해보세요
+              Lento와 함께하는 여정, 오늘부터 시작해 봐요
             </p>
           </div>
 
@@ -27,7 +28,7 @@ export function CTA() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="이메일을 입력하세요"
+              placeholder="이메일을 입력해 주세요"
               className="flex-1 rounded-2xl border border-[rgba(0,0,0,0.1)] bg-[#F8F9FA] px-6 py-4 text-[#333333] placeholder:text-[#888888] focus:border-transparent focus:ring-2 focus:ring-[#FF630F] focus:outline-none"
               required
             />
@@ -41,8 +42,15 @@ export function CTA() {
           </form>
 
           <p className="mt-6 text-sm text-[#888888]">
-            가입하시면 Lento의 <span className="text-[#333333]">이용약관</span>과{' '}
-            <span className="text-[#333333]">개인정보처리방침</span>에 동의하게 됩니다.
+            가입하시면 Lento의{' '}
+            <Link to="/terms" className="text-[#333333] underline-offset-2 hover:underline">
+              이용약관
+            </Link>
+            과{' '}
+            <Link to="/privacy" className="text-[#333333] underline-offset-2 hover:underline">
+              개인정보처리방침
+            </Link>
+            에 동의하게 돼요.
           </p>
         </div>
       </div>

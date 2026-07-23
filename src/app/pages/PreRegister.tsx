@@ -38,7 +38,7 @@ export function PreRegister() {
               </p>
             </div>
             <p className="text-sm text-[#888888]">
-              위 {notifyBy === 'email' ? '이메일' : '연락처'}로 출시 소식을 전달드립니다
+              위 {notifyBy === 'email' ? '이메일' : '연락처'}로 출시 소식을 전달해 드려요
             </p>
           </div>
 
@@ -62,7 +62,7 @@ export function PreRegister() {
             <span className="text-[#FF630F] font-medium">2026년 4월 출시 예정</span>
           </div>
           <h1 className="text-4xl md:text-5xl text-[#333333] mb-4">
-            Lento가 곧 찾아갑니다
+            Lento가 곧 찾아가요
           </h1>
           <p className="text-xl text-[#888888]">
             사전예약하시면 출시 즉시 알려드려요
@@ -79,7 +79,7 @@ export function PreRegister() {
                 </div>
                 <div>
                   <p className="text-[#333333] font-medium">출시 즉시 알림</p>
-                  <p className="text-sm text-[#888888]">가장 먼저 Lento를 만나보세요</p>
+                  <p className="text-sm text-[#888888]">가장 먼저 Lento를 만나 보세요</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -88,7 +88,7 @@ export function PreRegister() {
                 </div>
                 <div>
                   <p className="text-[#333333] font-medium">프리미엄 기능 30일 무료</p>
-                  <p className="text-sm text-[#888888]">모든 기능을 제한 없이</p>
+                  <p className="text-sm text-[#888888]">모든 기능을 제한 없이 써 볼 수 있어요</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -165,7 +165,7 @@ export function PreRegister() {
               </button>
 
               <p className="text-xs text-[#888888] text-center">
-                사전예약은 출시 알림을 위한 것이며, 언제든 취소할 수 있습니다.
+                사전예약은 출시 알림을 위한 것이며, 언제든 취소할 수 있어요.
               </p>
             </form>
           </div>

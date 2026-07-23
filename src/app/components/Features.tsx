@@ -20,41 +20,35 @@ const features = [
     icon: Calendar,
     title: '일정 관리',
     color: '#EBF4FF',
-    subtitle: '복잡한 일정도 Lento와 함께라면 쉽게',
+    subtitle: '복잡한 일정도 Lento와 함께라면 쉬워요',
     points: [
-      '병원 예약 일정을 자동으로 알림',
-      '배우자와 실시간으로 일정 공유',
-      '검사 결과 및 메모를 함께 기록',
-      '약 복용 시간 리마인더',
-      '다음 진료 준비 체크리스트',
+      '병원 예약 일정을 자동으로 알려드려요',
+      '배우자와 실시간으로 일정을 공유해요',
+      '약 복용 시간도 리마인더로 챙겨드려요',
     ],
     screenshots: [cal1, cal2, cal3, cal4],
   },
   {
     icon: Heart,
-    title: '건강 추적',
+    title: '건강리포트',
     color: '#E6F4EA',
-    subtitle: '나의 몸 상태를 정확하게 파악하세요',
+    subtitle: '나의 몸 상태를 정확하게 파악해요',
     points: [
-      '기초 체온 그래프로 한눈에 확인',
-      '생리 주기 및 배란일 예측',
-      '컨디션과 증상 일기 작성',
-      '건강 데이터 리포트 자동 생성',
-      '의료진과 공유 가능한 결과',
+      '기초 체온 그래프를 한눈에 확인해요',
+      '생리 주기와 배란일을 예측해요',
+      '건강 데이터 리포트를 자동으로 생성해요',
     ],
     screenshots: [health1, health2],
   },
   {
     icon: Users,
-    title: '부부 연결',
+    title: '부부 커넥팅',
     color: '#FFF4ED',
-    subtitle: '함께 하기에 더 힘이 나는 여정',
+    subtitle: '함께하기에 더 힘이 나는 여정이에요',
     points: [
-      '서로의 일정과 건강 상태 확인',
-      '감정 일기를 통한 소통',
-      '서로를 응원하는 메시지',
-      '중요한 날짜 함께 체크',
-      '부부가 함께 보는 통계',
+      '서로의 일정과 건강 상태를 확인해요',
+      '감정 일기로 소통할 수 있어요',
+      '서로를 응원하는 메시지를 보내요',
     ],
     screenshots: [connect1, connect2, connect3, connect4],
   },
@@ -62,13 +56,11 @@ const features = [
     icon: Camera,
     title: 'AI 라인 분석',
     color: '#FFF4ED',
-    subtitle: '임신 테스트를 더 정확하고 쉽게',
+    subtitle: '임신 테스트를 더 정확하고 쉽게 도와드려요',
     points: [
-      '카메라로 임신 테스트기 촬영',
-      '임신 가능성을 %로 확인',
-      'AI 분석으로 객관적인 판단',
-      '결과 히스토리 자동 저장',
-      '의료진과 상담 시 활용 가능',
+      '카메라로 임신 테스트기를 촬영해요',
+      '임신 가능성을 %로 확인해요',
+      '결과 히스토리를 자동으로 저장해요',
     ],
     screenshots: [ai1, ai2, ai3, ai4],
   },
@@ -80,10 +72,10 @@ export function Features() {
       <div className="bg-white px-6 py-16 text-center md:py-20">
         <div className="mx-auto w-full max-w-2xl">
           <h2 className="mb-4 text-3xl text-[#333333] md:text-4xl">
-            일정 관리, 건강 추적, 부부 연결을 한 곳에서
+            일정 관리, 건강리포트, 부부 커넥팅을 한곳에서 만나요
           </h2>
           <p className="text-lg text-[#888888]">
-            Lento와 함께 체계적이고 따뜻한 여정을 시작하세요
+            Lento와 함께 체계적이고 따뜻한 여정을 시작해요
           </p>
         </div>
       </div>
@@ -95,9 +87,9 @@ export function Features() {
             index % 2 === 0 ? 'bg-white' : 'bg-[#F8F9FA]'
           }`}
         >
-          <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-12 md:grid md:grid-cols-2 md:items-center md:gap-12">
+          <div className="mx-auto flex w-full min-w-0 max-w-6xl flex-col items-center gap-12 md:grid md:grid-cols-2 md:items-center md:gap-12">
             <div
-              className={`flex w-full max-w-xl flex-col items-center text-center md:max-w-none md:items-start md:text-left ${
+              className={`flex w-full min-w-0 max-w-xl flex-col items-center text-center md:max-w-none md:items-start md:text-left ${
                 index % 2 === 1 ? 'md:order-2' : ''
               }`}
             >
@@ -124,7 +116,7 @@ export function Features() {
             </div>
 
             <div
-              className={`flex w-full justify-center ${
+              className={`flex w-full min-w-0 justify-center ${
                 index % 2 === 1 ? 'md:order-1' : ''
               }`}
             >
