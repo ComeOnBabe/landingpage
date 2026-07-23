@@ -2,6 +2,10 @@
   command = "npm run build"
   publish = "dist"
 
+[build.environment]
+  # Prefer npm so installs follow package-lock.json (avoid pnpm frozen-lockfile CI failures).
+  NPM_FLAGS = "--no-fund --no-audit"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
