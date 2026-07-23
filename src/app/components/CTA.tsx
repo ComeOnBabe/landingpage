@@ -10,38 +10,38 @@ export function CTA() {
   };
 
   return (
-    <section id="cta" className="w-full px-6 py-20">
-      <div className="max-w-3xl mx-auto">
-        <div className="bg-white rounded-3xl p-12 shadow-[0_10px_40px_rgba(0,0,0,0.06)]">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl text-[#333333] mb-4">
+    <section id="cta" className="w-full max-w-full overflow-x-hidden px-6 py-20">
+      <div className="mx-auto w-full max-w-3xl">
+        <div className="rounded-3xl bg-white p-8 text-center shadow-[0_10px_40px_rgba(0,0,0,0.06)] sm:p-12">
+          <div className="mb-8">
+            <h2 className="mb-4 text-3xl text-[#333333] md:text-4xl">
               지금 바로 시작하세요
             </h2>
             <p className="text-lg text-[#888888]">
-              렌토와 함께하는 여정, 오늘부터 시작해보세요
+              Lento와 함께하는 여정, 오늘부터 시작해보세요
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
+          <form onSubmit={handleSubmit} className="mx-auto flex w-full max-w-xl flex-col gap-4 sm:flex-row">
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="이메일을 입력하세요"
-              className="flex-1 px-6 py-4 bg-[#F8F9FA] border border-[rgba(0,0,0,0.1)] rounded-2xl text-[#333333] placeholder:text-[#888888] focus:outline-none focus:ring-2 focus:ring-[#FF630F] focus:border-transparent"
+              className="flex-1 rounded-2xl border border-[rgba(0,0,0,0.1)] bg-[#F8F9FA] px-6 py-4 text-[#333333] placeholder:text-[#888888] focus:border-transparent focus:ring-2 focus:ring-[#FF630F] focus:outline-none"
               required
             />
             <button
               type="submit"
-              className="px-8 py-4 bg-[#FF630F] text-white rounded-2xl hover:bg-[#E55A0D] transition-colors shadow-sm flex items-center justify-center gap-2 group"
+              className="group flex items-center justify-center gap-2 rounded-2xl bg-[#FF630F] px-8 py-4 text-white shadow-sm transition-colors hover:bg-[#E55A0D]"
             >
               <span>시작하기</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
             </button>
           </form>
 
-          <p className="text-sm text-[#888888] text-center mt-6">
-            가입하시면 렌토의 <span className="text-[#333333]">이용약관</span>과{' '}
+          <p className="mt-6 text-sm text-[#888888]">
+            가입하시면 Lento의 <span className="text-[#333333]">이용약관</span>과{' '}
             <span className="text-[#333333]">개인정보처리방침</span>에 동의하게 됩니다.
           </p>
         </div>

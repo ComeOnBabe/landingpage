@@ -1,9 +1,5 @@
 import { Calendar, Heart, Users, Check, Camera } from 'lucide-react';
 import { PhoneFrame } from './PhoneFrame';
-import calendarImg from '../../imports/image-1.png';
-import homeImg from '../../imports/image.png';
-import connectImg from '../../imports/image-2.png';
-import aiImg from '../../imports/image-3.png';
 import health1 from '../../imports/image-21.png';
 import health2 from '../../imports/image-22.png';
 import connect1 from '../../imports/image-4.png';
@@ -24,7 +20,7 @@ const features = [
     icon: Calendar,
     title: '일정 관리',
     color: '#EBF4FF',
-    subtitle: '복잡한 일정도 렌토와 함께라면 쉽게',
+    subtitle: '복잡한 일정도 Lento와 함께라면 쉽게',
     points: [
       '병원 예약 일정을 자동으로 알림',
       '배우자와 실시간으로 일정 공유',
@@ -44,7 +40,7 @@ const features = [
       '생리 주기 및 배란일 예측',
       '컨디션과 증상 일기 작성',
       '건강 데이터 리포트 자동 생성',
-      '의료진과 공유 가능한 기록',
+      '의료진과 공유 가능한 결과',
     ],
     screenshots: [health1, health2],
   },
@@ -80,56 +76,59 @@ const features = [
 
 export function Features() {
   return (
-    <section id="features" className="w-full">
-      <div className="text-center py-20 px-6 bg-white">
-        <h2 className="text-3xl md:text-4xl text-[#333333] mb-4">
-          일정 관리, 건강 추적, 부부 연결을 한 곳에서
-        </h2>
-        <p className="text-lg text-[#888888]">
-          렌토와 함께 체계적이고 따뜻한 여정을 시작하세요
-        </p>
+    <section id="features" className="w-full max-w-full overflow-x-hidden">
+      <div className="bg-white px-6 py-16 text-center md:py-20">
+        <div className="mx-auto w-full max-w-2xl">
+          <h2 className="mb-4 text-3xl text-[#333333] md:text-4xl">
+            일정 관리, 건강 추적, 부부 연결을 한 곳에서
+          </h2>
+          <p className="text-lg text-[#888888]">
+            Lento와 함께 체계적이고 따뜻한 여정을 시작하세요
+          </p>
+        </div>
       </div>
 
       {features.map((feature, index) => (
         <div
           key={index}
-          className={`py-20 px-6 ${index % 2 === 0 ? 'bg-white' : 'bg-[#F8F9FA]'}`}
+          className={`w-full max-w-full overflow-x-hidden px-6 py-16 md:py-20 ${
+            index % 2 === 0 ? 'bg-white' : 'bg-[#F8F9FA]'
+          }`}
         >
-          <div className="max-w-6xl mx-auto">
-            <div className={`grid md:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
-              <div className={`${index % 2 === 1 ? 'md:order-2' : ''}`}>
-                <div className="flex items-center gap-3 mb-6">
-                  <div
-                    className="w-14 h-14 rounded-2xl flex items-center justify-center"
-                    style={{ backgroundColor: feature.color }}
-                  >
-                    <feature.icon className="w-7 h-7 text-[#FF630F]" />
-                  </div>
-                  <h3 className="text-2xl text-[#333333]">{feature.title}</h3>
+          <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-12 md:grid md:grid-cols-2 md:items-center md:gap-12">
+            <div
+              className={`flex w-full max-w-xl flex-col items-center text-center md:max-w-none md:items-start md:text-left ${
+                index % 2 === 1 ? 'md:order-2' : ''
+              }`}
+            >
+              <div className="mb-6 flex items-center justify-center gap-3 md:justify-start">
+                <div
+                  className="flex h-14 w-14 items-center justify-center rounded-2xl"
+                  style={{ backgroundColor: feature.color }}
+                >
+                  <feature.icon className="h-7 w-7 text-[#FF630F]" />
                 </div>
-                <h4 className="text-xl text-[#333333] mb-8">
-                  {feature.subtitle}
-                </h4>
-                <div className="space-y-4">
-                  {feature.points.map((point, idx) => (
-                    <div key={idx} className="flex items-start gap-4">
-                      <div className="w-6 h-6 rounded-full bg-[#FF630F] flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <Check className="w-4 h-4 text-white" />
-                      </div>
-                      <p className="text-[#333333]">{point}</p>
+                <h3 className="text-2xl text-[#333333]">{feature.title}</h3>
+              </div>
+              <h4 className="mb-8 text-xl text-[#333333]">{feature.subtitle}</h4>
+              <div className="w-full space-y-4 text-left">
+                {feature.points.map((point, idx) => (
+                  <div key={idx} className="flex items-start gap-4">
+                    <div className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[#FF630F]">
+                      <Check className="h-4 w-4 text-white" />
                     </div>
-                  ))}
-                </div>
+                    <p className="text-[#333333]">{point}</p>
+                  </div>
+                ))}
               </div>
+            </div>
 
-              <div className={`flex justify-center ${index % 2 === 1 ? 'md:order-1' : ''}`}>
-                <PhoneFrame
-                  screenshot={feature.screenshot}
-                  screenshots={feature.screenshots}
-                  alt={feature.title}
-                  pageCount={feature.pageCount}
-                />
-              </div>
+            <div
+              className={`flex w-full justify-center ${
+                index % 2 === 1 ? 'md:order-1' : ''
+              }`}
+            >
+              <PhoneFrame screenshots={feature.screenshots} alt={feature.title} />
             </div>
           </div>
         </div>

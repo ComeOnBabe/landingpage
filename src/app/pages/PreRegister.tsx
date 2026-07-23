@@ -24,7 +24,7 @@ export function PreRegister() {
               사전예약이 완료되었어요!
             </h1>
             <p className="text-lg text-[#888888]">
-              렌토가 4월에 출시되면 가장 먼저 알려드릴게요.
+              Lento가 4월에 출시되면 가장 먼저 알려드릴게요.
               <br />
               함께할 준비를 해주세요 💕
             </p>
@@ -62,7 +62,7 @@ export function PreRegister() {
             <span className="text-[#FF630F] font-medium">2026년 4월 출시 예정</span>
           </div>
           <h1 className="text-4xl md:text-5xl text-[#333333] mb-4">
-            렌토가 곧 찾아갑니다
+            Lento가 곧 찾아갑니다
           </h1>
           <p className="text-xl text-[#888888]">
             사전예약하시면 출시 즉시 알려드려요
@@ -79,7 +79,7 @@ export function PreRegister() {
                 </div>
                 <div>
                   <p className="text-[#333333] font-medium">출시 즉시 알림</p>
-                  <p className="text-sm text-[#888888]">가장 먼저 렌토를 만나보세요</p>
+                  <p className="text-sm text-[#888888]">가장 먼저 Lento를 만나보세요</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">

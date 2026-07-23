@@ -80,83 +80,91 @@ export function PhoneFrame({ screenshot, screenshots, alt, pageCount = 3 }: Phon
   };
 
   return (
-    <div className="relative w-72 h-[600px]">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#2c2c2c] via-[#1f1f1f] to-[#2c2c2c] rounded-[3rem] shadow-[0_30px_80px_rgba(0,0,0,0.2),0_0_0_1px_rgba(255,255,255,0.1)_inset] p-2">
-        <div className="relative w-full h-full bg-black rounded-[2.5rem] overflow-hidden flex flex-col">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 z-20 w-32 h-7 bg-black rounded-b-3xl flex items-end justify-center pb-1">
-            <div className="w-14 h-1 bg-gray-800 rounded-full"></div>
-          </div>
+    <div className="relative mx-auto w-full max-w-[288px] pb-10">
+      <div className="relative mx-auto h-[560px] w-[260px] sm:h-[600px] sm:w-72">
+        <div
+          className="pointer-events-none absolute top-1/2 left-1/2 -z-10 h-[70%] w-[90%] -translate-x-1/2 -translate-y-1/2 rounded-full"
+          style={{
+            background:
+              'radial-gradient(ellipse at center, rgba(255,99,15,0.10) 0%, rgba(255,255,255,0) 70%)',
+          }}
+        />
 
-          <div
-            ref={containerRef}
-            className="flex-1 relative overflow-hidden cursor-grab active:cursor-grabbing select-none"
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-          >
-            {isMultipleScreenshots ? (
-              <div
-                className={`flex h-full ${isDragging ? '' : 'transition-transform duration-700 ease-in-out'}`}
-                style={{
-                  transform: `translateX(calc(-${currentPage * 100}% + ${translateX}px))`,
-                }}
-              >
-                {screenshots.map((img, index) => (
-                  <div key={index} className="min-w-full h-full flex-shrink-0">
-                    <img
-                      src={img}
-                      alt={`${alt} ${index + 1}`}
-                      className="w-full h-full object-cover object-top pointer-events-none"
-                      draggable={false}
-                    />
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div
-                className={`flex h-full ${isDragging ? '' : 'transition-transform duration-700 ease-in-out'}`}
-                style={{
-                  transform: `translateX(calc(-${currentPage * 100}% + ${translateX}px))`,
-                }}
-              >
-                {Array.from({ length: pageCount }).map((_, index) => (
-                  <div key={index} className="min-w-full h-full flex-shrink-0 overflow-hidden">
-                    <img
-                      src={screenshot}
-                      alt={`${alt} - Page ${index + 1}`}
-                      className="w-full h-auto object-cover object-top pointer-events-none"
-                      draggable={false}
-                      style={{
-                        transform: `translateY(-${index * 100}%)`,
-                      }}
-                    />
-                  </div>
-                ))}
-              </div>
-            )}
+        <div className="absolute inset-0 rounded-[3rem] bg-gradient-to-b from-[#2c2c2c] via-[#1f1f1f] to-[#2c2c2c] p-2 shadow-[0_24px_60px_rgba(0,0,0,0.16)]">
+          <div className="relative flex h-full w-full flex-col overflow-hidden rounded-[2.5rem] bg-black">
+            <div className="absolute top-0 left-1/2 z-20 flex h-7 w-32 -translate-x-1/2 items-end justify-center rounded-b-3xl bg-black pb-1">
+              <div className="h-1 w-14 rounded-full bg-gray-800"></div>
+            </div>
+
+            <div
+              ref={containerRef}
+              className="relative flex-1 cursor-grab overflow-hidden select-none active:cursor-grabbing"
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+              onMouseLeave={handleMouseUp}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
+              {isMultipleScreenshots ? (
+                <div
+                  className={`flex h-full ${isDragging ? '' : 'transition-transform duration-700 ease-in-out'}`}
+                  style={{
+                    transform: `translateX(calc(-${currentPage * 100}% + ${translateX}px))`,
+                  }}
+                >
+                  {screenshots.map((img, index) => (
+                    <div key={index} className="h-full min-w-full flex-shrink-0">
+                      <img
+                        src={img}
+                        alt={`${alt} ${index + 1}`}
+                        className="pointer-events-none h-full w-full object-cover object-top"
+                        draggable={false}
+                      />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div
+                  className={`flex h-full ${isDragging ? '' : 'transition-transform duration-700 ease-in-out'}`}
+                  style={{
+                    transform: `translateX(calc(-${currentPage * 100}% + ${translateX}px))`,
+                  }}
+                >
+                  {Array.from({ length: pageCount }).map((_, index) => (
+                    <div key={index} className="h-full min-w-full flex-shrink-0 overflow-hidden">
+                      <img
+                        src={screenshot}
+                        alt={`${alt} - Page ${index + 1}`}
+                        className="pointer-events-none h-auto w-full object-cover object-top"
+                        draggable={false}
+                        style={{
+                          transform: `translateY(-${index * 100}%)`,
+                        }}
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
-        {Array.from({ length: totalPages }).map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentPage(index)}
-            className={`h-2 rounded-full transition-all duration-300 ${
-              index === currentPage
-                ? 'bg-[#FF630F] w-8'
-                : 'bg-[#333333] w-2 hover:bg-[#555555]'
-            }`}
-          />
-        ))}
+        <div className="absolute -bottom-8 left-1/2 flex -translate-x-1/2 gap-2">
+          {Array.from({ length: totalPages }).map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentPage(index)}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                index === currentPage
+                  ? 'w-8 bg-[#FF630F]'
+                  : 'w-2 bg-[#D1D5DB] hover:bg-[#9CA3AF]'
+              }`}
+            />
+          ))}
+        </div>
       </div>
-
-      <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#FF630F] opacity-10 rounded-full blur-3xl"></div>
     </div>
   );
 }

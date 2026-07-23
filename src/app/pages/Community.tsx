@@ -120,7 +120,7 @@ export function Community() {
     <div className="min-h-screen bg-[#F8F9FA] pt-24 pb-12">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-8">
-          <h1 className="text-3xl md:text-4xl text-[#333333] mb-4">렌토 커뮤니티</h1>
+          <h1 className="text-3xl md:text-4xl text-[#333333] mb-4">Lento 커뮤니티</h1>
           <p className="text-lg text-[#888888]">같은 여정을 걷는 사람들과 함께 나누는 공간</p>
         </div>
 

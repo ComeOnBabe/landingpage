@@ -36,10 +36,10 @@ const previewPosts = [
 
 export function CommunityPreview() {
   return (
-    <section className="w-full px-6 py-20 bg-white">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl text-[#333333] mb-4">
+    <section className="w-full max-w-full overflow-x-hidden bg-white px-6 py-20">
+      <div className="mx-auto w-full max-w-6xl">
+        <div className="mx-auto mb-12 w-full max-w-2xl text-center">
+          <h2 className="mb-4 text-3xl text-[#333333] md:text-4xl">
             혼자가 아니에요, 함께해요
           </h2>
           <p className="text-lg text-[#888888]">

@@ -6,7 +6,7 @@ import { PreRegister } from './pages/PreRegister';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#F8F9FA]">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#F8F9FA]">
       <BrowserRouter>
         <Navigation />
         <Routes>
