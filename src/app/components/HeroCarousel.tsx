@@ -60,12 +60,12 @@ function probeImage(url: string): Promise<boolean> {
   });
 }
 
-async function resolveHeroImage(imageBase: string): Promise<string> {
+async function resolveHeroImage(imageBase: string): Promise<string | null> {
   for (const ext of IMAGE_EXTENSIONS) {
     const url = `/hero/${imageBase}.${ext}`;
     if (await probeImage(url)) return url;
   }
-  return `/hero/${imageBase}.svg`;
+  return null;
 }
 
 const AUTO_MS = 5500;
@@ -75,7 +75,7 @@ export function HeroCarousel() {
   const [slides, setSlides] = useState<ResolvedSlide[]>(() =>
     heroSlideMetas.map((meta) => ({
       ...meta,
-      image: `/hero/${meta.imageBase}.svg`,
+      image: '',
     })),
   );
   const [index, setIndex] = useState(0);
@@ -97,10 +97,12 @@ export function HeroCarousel() {
       const resolved = await Promise.all(
         heroSlideMetas.map(async (meta) => ({
           ...meta,
-          image: await resolveHeroImage(meta.imageBase),
+          image: (await resolveHeroImage(meta.imageBase)) ?? '',
         })),
       );
-      if (!cancelled) setSlides(resolved);
+      if (!cancelled) {
+        setSlides(resolved);
+      }
     })();
 
     return () => {
@@ -213,15 +215,21 @@ export function HeroCarousel() {
       >
         {slides.map((item) => (
           <div key={item.id} className="relative h-full w-full flex-shrink-0">
-            <LoadingImage
-              src={item.image}
-              alt=""
-              wrapperClassName="h-full w-full"
-              className="pointer-events-none h-full w-full object-cover"
-              placeholderClassName="bg-[#6B6560]"
-              spinnerClassName="h-10 w-10 text-white"
-              draggable={false}
-            />
+            {item.image ? (
+              <LoadingImage
+                src={item.image}
+                alt=""
+                wrapperClassName="h-full w-full"
+                className="pointer-events-none h-full w-full object-cover"
+                placeholderClassName="bg-[#6B6560]"
+                spinnerClassName="h-10 w-10 text-white"
+                draggable={false}
+              />
+            ) : (
+              <div className="flex h-full w-full items-center justify-center bg-[#6B6560]">
+                <span className="h-10 w-10 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+              </div>
+            )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/20 to-black/25" />
           </div>
         ))}

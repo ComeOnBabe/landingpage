@@ -29,57 +29,72 @@ export function LoadingImage({
   ...props
 }: LoadingImageProps) {
   const imgRef = useRef<HTMLImageElement | null>(null);
-  const [loaded, setLoaded] = useState(false);
+  const [status, setStatus] = useState<'loading' | 'loaded' | 'error'>('loading');
 
   useEffect(() => {
-    const img = imgRef.current;
-    if (img?.complete) {
-      setLoaded(true);
+    if (!src) {
+      setStatus('loading');
       return;
     }
-    setLoaded(false);
+    const img = imgRef.current;
+    if (img?.complete && img.naturalWidth + img.naturalHeight > 0) {
+      setStatus('loaded');
+      return;
+    }
+    // complete but 0x0 is common for some SVGs — still treat as loaded if complete
+    if (img?.complete) {
+      setStatus('loaded');
+      return;
+    }
+    setStatus('loading');
   }, [src]);
-
-  const markLoaded = useCallback(() => setLoaded(true), []);
 
   const setRefs = useCallback((img: HTMLImageElement | null) => {
     imgRef.current = img;
-    if (img?.complete) {
-      setLoaded(true);
+    if (!img || !src) return;
+    if (img.complete) {
+      setStatus('loaded');
     }
-  }, []);
+  }, [src]);
 
   const handleLoad = (e: SyntheticEvent<HTMLImageElement>) => {
-    markLoaded();
+    setStatus('loaded');
     onLoad?.(e);
   };
 
   const handleError = (e: SyntheticEvent<HTMLImageElement>) => {
-    markLoaded();
+    // Keep placeholder — don't reveal broken-image icon
+    setStatus('error');
     onError?.(e);
   };
 
+  const showPlaceholder = status !== 'loaded';
+
   return (
     <span className={`relative block overflow-hidden ${wrapperClassName}`}>
-      {!loaded && (
+      {showPlaceholder && (
         <span
           className={`absolute inset-0 z-10 flex items-center justify-center bg-[#f3f3f3] ${placeholderClassName}`}
           aria-hidden
         >
-          <Loader2
-            className={`h-7 w-7 animate-spin text-[#FF630F] ${spinnerClassName}`}
-          />
+          {status === 'loading' && (
+            <Loader2
+              className={`h-7 w-7 animate-spin text-[#FF630F] ${spinnerClassName}`}
+            />
+          )}
         </span>
       )}
-      <img
-        ref={setRefs}
-        src={src}
-        alt={alt}
-        className={`${className} ${loaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
-        onLoad={handleLoad}
-        onError={handleError}
-        {...props}
-      />
+      {src ? (
+        <img
+          ref={setRefs}
+          src={src}
+          alt={alt}
+          className={`${className} ${status === 'loaded' ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
+          onLoad={handleLoad}
+          onError={handleError}
+          {...props}
+        />
+      ) : null}
     </span>
   );
 }
