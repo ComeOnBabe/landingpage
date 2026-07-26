@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router";
 import { notices } from "../data/notices";
+import { LoadingImage } from "./LoadingImage";
 
 type HeroSlideMeta = {
   id: string;
@@ -212,10 +213,13 @@ export function HeroCarousel() {
       >
         {slides.map((item) => (
           <div key={item.id} className="relative h-full w-full flex-shrink-0">
-            <img
+            <LoadingImage
               src={item.image}
               alt=""
+              wrapperClassName="h-full w-full"
               className="pointer-events-none h-full w-full object-cover"
+              placeholderClassName="bg-[#6B6560]"
+              spinnerClassName="h-10 w-10 text-white"
               draggable={false}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/20 to-black/25" />

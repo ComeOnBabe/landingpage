@@ -6,6 +6,7 @@ import {
   PenLine,
 } from 'lucide-react';
 import lentoIcon from '../../imports/ic_lento.svg';
+import { LoadingImage } from '../components/LoadingImage';
 
 type CommunityPost = {
   id: number;
@@ -209,10 +210,12 @@ export function Community() {
                   </h2>
 
                   <div className="mb-3 flex items-center gap-2">
-                    <img
+                    <LoadingImage
                       src={lentoIcon}
                       alt=""
+                      wrapperClassName="h-6 w-6 shrink-0 rounded-full"
                       className="h-6 w-6 rounded-full object-cover"
+                      spinnerClassName="h-3 w-3"
                     />
                     <span className="text-sm text-[#888888]">{post.author}</span>
                   </div>
@@ -222,10 +225,11 @@ export function Community() {
                   </p>
 
                   {post.image && (
-                    <img
+                    <LoadingImage
                       src={post.image}
                       alt=""
-                      className="mb-3 w-full rounded-lg object-cover md:max-h-64 md:object-cover"
+                      wrapperClassName="mb-3 w-full rounded-lg"
+                      className="w-full rounded-lg object-cover md:max-h-64"
                     />
                   )}
 

@@ -3,6 +3,7 @@ import { ChevronDown, ChevronUp, Share2 } from 'lucide-react';
 import { Footer } from '../components/Footer';
 import { getAdjacentNotices, getNoticeById } from '../data/notices';
 import lentoIcon from '../../imports/ic_lento.svg';
+import { LoadingImage } from '../components/LoadingImage';
 
 const URL_REGEX = /(https?:\/\/[^\s]+)/g;
 
@@ -68,10 +69,12 @@ export function NoticeDetail() {
           </h1>
 
           <div className="mb-6 flex items-center gap-3">
-            <img
+            <LoadingImage
               src={lentoIcon}
               alt="Lento"
+              wrapperClassName="h-11 w-11 shrink-0 rounded-full"
               className="h-11 w-11 rounded-full object-cover shadow-sm"
+              spinnerClassName="h-4 w-4"
             />
             <div>
               <p className="font-medium text-[#333333]">{notice.author}</p>
@@ -87,10 +90,11 @@ export function NoticeDetail() {
 
           <div className="border-t border-[#eeeeee]" />
 
-          <img
+          <LoadingImage
             src="/img_header.png"
             alt="Lento"
-            className="mt-8 mb-2 w-full h-auto"
+            wrapperClassName="mt-8 mb-2 w-full"
+            className="h-auto w-full"
           />
 
           <NoticeBody text={notice.body} />

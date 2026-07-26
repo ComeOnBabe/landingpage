@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import { PhoneCarousel } from './PhoneCarousel';
+import { LoadingImage } from './LoadingImage';
 import calendarImg from '../../imports/image-1.png';
 import homeImg from '../../imports/image.png';
 import connectImg from '../../imports/image-2.png';
@@ -54,9 +55,10 @@ export function Hero() {
           <div className="flex w-full min-w-0 justify-center md:justify-end">
             <PhoneCarousel alt="Lento 앱 미리보기" pageCount={screenshots.length}>
               {(index) => (
-                <img
+                <LoadingImage
                   src={screenshots[index]}
                   alt={`Screen ${index + 1}`}
+                  wrapperClassName="h-full w-full"
                   className="pointer-events-none h-full w-full object-cover object-top"
                   draggable={false}
                 />

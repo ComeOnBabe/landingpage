@@ -1,4 +1,5 @@
 import { PhoneCarousel } from './PhoneCarousel';
+import { LoadingImage } from './LoadingImage';
 
 interface PhoneFrameProps {
   screenshot?: string;
@@ -15,17 +16,19 @@ export function PhoneFrame({ screenshot, screenshots, alt, pageCount = 3 }: Phon
     <PhoneCarousel alt={alt} pageCount={totalPages}>
       {(index) =>
         isMultiple ? (
-          <img
+          <LoadingImage
             src={screenshots![index]}
             alt={`${alt} ${index + 1}`}
+            wrapperClassName="h-full w-full"
             className="pointer-events-none h-full w-full object-cover object-top"
             draggable={false}
           />
         ) : (
           <div className="h-full w-full overflow-hidden">
-            <img
+            <LoadingImage
               src={screenshot}
               alt={`${alt} - Page ${index + 1}`}
+              wrapperClassName="w-full"
               className="pointer-events-none h-auto w-full object-cover object-top"
               draggable={false}
               style={{ transform: `translateY(-${index * 100}%)` }}

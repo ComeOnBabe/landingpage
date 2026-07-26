@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import lentoIcon from '../../imports/ic_lento.svg';
+import { LoadingImage } from './LoadingImage';
 
 const links = [
   { to: '/about', label: '서비스 소개' },
@@ -15,10 +16,12 @@ export function Footer() {
       <div className="mx-auto w-full max-w-6xl">
         <div className="flex flex-col items-center justify-between gap-6 text-center md:flex-row md:text-left">
           <Link to="/" className="flex items-center gap-3">
-            <img
+            <LoadingImage
               src={lentoIcon}
               alt="Lento"
+              wrapperClassName="h-10 w-10 shrink-0 rounded-full"
               className="h-10 w-10 rounded-full object-cover shadow-sm"
+              spinnerClassName="h-4 w-4"
             />
             <span className="text-xl font-medium text-[#333333]">Lento</span>
           </Link>

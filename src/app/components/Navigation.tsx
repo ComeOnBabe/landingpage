@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router';
 import { X } from 'lucide-react';
 import lentoIcon from '../../imports/ic_lento.svg';
+import { LoadingImage } from './LoadingImage';
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -73,10 +74,12 @@ export function Navigation() {
             onClick={closeMenu}
             aria-label="홈으로 이동"
           >
-            <img
+            <LoadingImage
               src={lentoIcon}
               alt="Lento"
+              wrapperClassName="h-10 w-10 shrink-0 rounded-full"
               className="h-10 w-10 rounded-full object-cover shadow-sm"
+              spinnerClassName="h-4 w-4"
             />
             <span
               className={`text-xl font-medium transition-colors duration-500 ease-in-out ${
