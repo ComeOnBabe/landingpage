@@ -1,6 +1,7 @@
 import {
   useCallback,
   useEffect,
+  useRef,
   useState,
   type ImgHTMLAttributes,
   type SyntheticEvent,
@@ -27,16 +28,23 @@ export function LoadingImage({
   src,
   ...props
 }: LoadingImageProps) {
+  const imgRef = useRef<HTMLImageElement | null>(null);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
+    const img = imgRef.current;
+    if (img?.complete) {
+      setLoaded(true);
+      return;
+    }
     setLoaded(false);
   }, [src]);
 
   const markLoaded = useCallback(() => setLoaded(true), []);
 
-  const handleRef = useCallback((img: HTMLImageElement | null) => {
-    if (img?.complete && img.naturalWidth > 0) {
+  const setRefs = useCallback((img: HTMLImageElement | null) => {
+    imgRef.current = img;
+    if (img?.complete) {
       setLoaded(true);
     }
   }, []);
@@ -64,7 +72,7 @@ export function LoadingImage({
         </span>
       )}
       <img
-        ref={handleRef}
+        ref={setRefs}
         src={src}
         alt={alt}
         className={`${className} ${loaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}

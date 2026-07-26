@@ -24,7 +24,7 @@ export function PreRegister() {
               사전예약이 완료되었어요!
             </h1>
             <p className="text-lg text-[#888888]">
-              Lento가 4월에 출시되면 가장 먼저 알려드릴게요.
+              Lento가 8월에 출시되면 가장 먼저 알려드릴게요.
               <br />
               함께할 준비를 해주세요 💕
             </p>
@@ -59,7 +59,7 @@ export function PreRegister() {
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#FF630F]/10 rounded-full mb-6">
             <Calendar className="w-5 h-5 text-[#FF630F]" />
-            <span className="text-[#FF630F] font-medium">2026년 4월 출시 예정</span>
+            <span className="text-[#FF630F] font-medium">2026년 8월 출시 예정</span>
           </div>
           <h1 className="text-4xl md:text-5xl text-[#333333] mb-4">
             Lento가 곧 찾아가요
