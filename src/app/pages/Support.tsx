@@ -6,23 +6,23 @@ import { Footer } from '../components/Footer';
 const faqs = [
   {
     q: 'Lento는 어떤 서비스인가요?',
-    a: '임신 준비와 난임 여정을 돕는 앱이에요. 일정 관리, 건강리포트, 부부 커넥팅, AI 라인 분석 기능을 제공해요.',
+    a: '임신 준비와 난임 여정을 돕는 앱입니다. 일정 관리, 건강리포트, 부부 커넥팅, AI 라인 분석 기능을 제공합니다.',
   },
   {
     q: '출시는 언제인가요?',
-    a: '2026년 4월 출시를 준비하고 있어요. 사전예약을 하시면 출시 소식을 가장 먼저 알려드려요.',
+    a: '2026년 4월 출시를 준비하고 있습니다. 사전예약을 하시면 출시 소식을 가장 먼저 알려드립니다.',
   },
   {
-    q: '커뮤니티는 언제 열려요?',
-    a: '커뮤니티는 현재 준비 중이에요. 로그인 기능과 함께 공개될 예정이에요.',
+    q: '커뮤니티는 언제 열리나요?',
+    a: '커뮤니티는 현재 준비 중입니다. 로그인 기능과 함께 공개될 예정입니다.',
   },
   {
     q: 'AI 라인 분석은 의료 진단인가요?',
-    a: '아니요. AI 결과는 참고용이며 의료 진단을 대체하지 않아요. 중요한 결정은 반드시 의료 전문가와 상담해 주세요.',
+    a: '아닙니다. AI 결과는 참고용이며 의료 진단을 대체하지 않습니다. 중요한 결정은 반드시 의료 전문가와 상담해 주시기 바랍니다.',
   },
   {
-    q: '계정이나 데이터 삭제를 요청하고 싶어요',
-    a: '아래 이메일로 요청해 주세요. 확인 후 관련 법령에 따라 빠르게 처리해 드릴게요.',
+    q: '계정이나 데이터 삭제를 요청하고 싶습니다',
+    a: '아래 이메일로 요청해 주시기 바랍니다. 확인 후 관련 법령에 따라 빠르게 처리해 드리겠습니다.',
   },
 ];
 
@@ -43,11 +43,7 @@ export function Support() {
       <div className="px-6 pt-28 pb-16">
         <div className="mx-auto max-w-4xl">
           <div className="mb-12 text-center">
-            <p className="mb-3 text-sm font-medium text-[#FF630F]">고객센터</p>
-            <h1 className="mb-4 text-3xl text-[#333333] md:text-4xl">무엇을 도와드릴까요?</h1>
-            <p className="text-lg text-[#888888]">
-              자주 묻는 질문을 확인하거나, 직접 문의를 남겨 주세요.
-            </p>
+            <h1 className="text-3xl text-[#333333] md:text-4xl">고객센터</h1>
           </div>
 
           <div className="mb-10 grid gap-4 sm:grid-cols-3">
@@ -103,14 +99,14 @@ export function Support() {
           <div className="rounded-3xl bg-white p-6 shadow-sm md:p-8">
             <h2 className="mb-2 text-xl text-[#333333]">문의하기</h2>
             <p className="mb-6 text-sm text-[#888888]">
-              남겨 주신 내용은 확인 후 이메일로 답변드릴게요.
+              남겨 주신 내용은 확인 후 이메일로 답변드리겠습니다.
             </p>
 
             {sent ? (
               <div className="rounded-2xl bg-[#E6F4EA] px-6 py-8 text-center">
-                <p className="mb-2 text-lg font-medium text-[#333333]">문의가 접수됐어요</p>
+                <p className="mb-2 text-lg font-medium text-[#333333]">문의가 접수되었습니다</p>
                 <p className="mb-6 text-sm text-[#888888]">
-                  남겨 주신 연락처로 답변드릴게요. 조금만 기다려 주세요!
+                  남겨 주신 연락처로 답변드리겠습니다. 조금만 기다려 주시기 바랍니다.
                 </p>
                 <Link
                   to="/"
@@ -128,7 +124,7 @@ export function Support() {
                     onChange={(e) => setName(e.target.value)}
                     required
                     className="w-full rounded-xl border border-black/10 bg-[#F8F9FA] px-4 py-3 text-[#333333] outline-none focus:ring-2 focus:ring-[#FF630F]"
-                    placeholder="이름을 입력해 주세요"
+                    placeholder="이름을 입력해 주십시오"
                   />
                 </div>
                 <div>
@@ -139,7 +135,7 @@ export function Support() {
                     onChange={(e) => setEmail(e.target.value)}
                     required
                     className="w-full rounded-xl border border-black/10 bg-[#F8F9FA] px-4 py-3 text-[#333333] outline-none focus:ring-2 focus:ring-[#FF630F]"
-                    placeholder="이메일을 입력해 주세요"
+                    placeholder="이메일을 입력해 주십시오"
                   />
                 </div>
                 <div>
@@ -150,7 +146,7 @@ export function Support() {
                     required
                     rows={5}
                     className="w-full resize-none rounded-xl border border-black/10 bg-[#F8F9FA] px-4 py-3 text-[#333333] outline-none focus:ring-2 focus:ring-[#FF630F]"
-                    placeholder="궁금한 점을 적어 주세요"
+                    placeholder="궁금한 점을 적어 주십시오"
                   />
                 </div>
                 <button

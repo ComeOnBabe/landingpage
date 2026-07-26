@@ -131,6 +131,14 @@
     font-size: var(--font-size);
     max-width: 100%;
     overflow-x: hidden;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* legacy Edge */
+  }
+
+  html::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none; /* Chrome, Safari */
   }
 
   body {
@@ -138,6 +146,14 @@
     font-family: var(--font-sans);
     max-width: 100%;
     overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  body::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
   }
 
   #root {

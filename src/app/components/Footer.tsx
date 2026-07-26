@@ -3,6 +3,7 @@ import lentoIcon from '../../imports/ic_lento.svg';
 
 const links = [
   { to: '/about', label: '서비스 소개' },
+  { to: '/notices', label: '공지사항' },
   { to: '/terms', label: '이용약관' },
   { to: '/privacy', label: '개인정보처리방침' },
   { to: '/support', label: '고객센터' },

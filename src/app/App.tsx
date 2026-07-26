@@ -1,12 +1,14 @@
 import { BrowserRouter, Routes, Route } from 'react-router';
 import { Navigation } from './components/Navigation';
-import { Landing } from './pages/Landing';
+import { Home } from './pages/Home';
 import { Community } from './pages/Community';
 import { PreRegister } from './pages/PreRegister';
 import { ServiceIntro } from './pages/ServiceIntro';
 import { Terms } from './pages/Terms';
 import { Privacy } from './pages/Privacy';
 import { Support } from './pages/Support';
+import { Notices } from './pages/Notices';
+import { NoticeDetail } from './pages/NoticeDetail';
 
 export default function App() {
   return (
@@ -14,8 +16,10 @@ export default function App() {
       <BrowserRouter>
         <Navigation />
         <Routes>
-          <Route path="/" element={<Landing />} />
+          <Route path="/" element={<Home />} />
           <Route path="/community" element={<Community />} />
+          <Route path="/notices" element={<Notices />} />
+          <Route path="/notices/:id" element={<NoticeDetail />} />
           <Route path="/pre-register" element={<PreRegister />} />
           <Route path="/about" element={<ServiceIntro />} />
           <Route path="/terms" element={<Terms />} />

@@ -174,7 +174,7 @@ export function PreRegister() {
         <div className="text-center">
           <div className="inline-block bg-white rounded-2xl px-8 py-4 shadow-sm">
             <p className="text-sm text-[#888888] mb-2">현재까지</p>
-            <p className="text-3xl text-[#FF630F] font-medium">1,247명</p>
+            <p className="text-3xl text-[#FF630F] font-medium">312명</p>
             <p className="text-sm text-[#888888] mt-2">사전예약 참여</p>
           </div>
         </div>
