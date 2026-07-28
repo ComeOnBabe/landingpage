@@ -6,6 +6,20 @@
   # Prefer npm so installs follow package-lock.json (avoid pnpm frozen-lockfile CI failures).
   NPM_FLAGS = "--no-fund --no-audit"
 
+[functions]
+  directory = "netlify/functions"
+
+[dev]
+  command = "npm run dev"
+  targetPort = 5173
+  port = 8888
+  publish = "dist"
+
+[[redirects]]
+  from = "/api/pre-register"
+  to = "/.netlify/functions/pre-register"
+  status = 200
+
 [[redirects]]
   from = "/*"
   to = "/index.html"

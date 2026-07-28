@@ -5,11 +5,42 @@ export function PreRegister() {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
   const [notifyBy, setNotifyBy] = useState<'email' | 'phone'>('email');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setError('');
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/pre-register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          notifyBy,
+          email: notifyBy === 'email' ? email : undefined,
+          phone: notifyBy === 'phone' ? phone : undefined,
+        }),
+      });
+
+      const data = (await response.json()) as { ok?: boolean; error?: string };
+
+      if (!response.ok || !data.ok) {
+        throw new Error(data.error ?? 'submit_failed');
+      }
+
+      setIsSubmitted(true);
+    } catch (err) {
+      const message =
+        err instanceof Error && err.message !== 'submit_failed'
+          ? err.message
+          : '사전예약 접수에 실패했어요. 잠시 후 다시 시도해 주세요.';
+      setError(message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
@@ -159,10 +190,15 @@ export function PreRegister() {
 
               <button
                 type="submit"
-                className="w-full px-8 py-4 bg-[#FF630F] text-white rounded-xl hover:bg-[#E55A0D] transition-colors shadow-sm font-medium"
+                disabled={isSubmitting}
+                className="w-full px-8 py-4 bg-[#FF630F] text-white rounded-xl hover:bg-[#E55A0D] transition-colors shadow-sm font-medium disabled:cursor-not-allowed disabled:opacity-60"
               >
-                사전예약하기
+                {isSubmitting ? '접수 중…' : '사전예약하기'}
               </button>
+
+              {error && (
+                <p className="text-center text-sm text-red-500">{error}</p>
+              )}
 
               <p className="text-xs text-[#888888] text-center">
                 사전예약은 출시 알림을 위한 것이며, 언제든 취소할 수 있어요.
