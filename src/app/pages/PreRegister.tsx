@@ -1,42 +1,42 @@
-import { useState } from 'react';
-import { Calendar, Bell, Check } from 'lucide-react';
+import { useState } from "react";
+import { Calendar, Bell, Check } from "lucide-react";
 
 export function PreRegister() {
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState('');
-  const [notifyBy, setNotifyBy] = useState<'email' | 'phone'>('email');
+  const [error, setError] = useState("");
+  const [notifyBy, setNotifyBy] = useState<"email" | "phone">("email");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError("");
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/api/pre-register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/pre-register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           notifyBy,
-          email: notifyBy === 'email' ? email : undefined,
-          phone: notifyBy === 'phone' ? phone : undefined,
+          email: notifyBy === "email" ? email : undefined,
+          phone: notifyBy === "phone" ? phone : undefined,
         }),
       });
 
       const data = (await response.json()) as { ok?: boolean; error?: string };
 
       if (!response.ok || !data.ok) {
-        throw new Error(data.error ?? 'submit_failed');
+        throw new Error(data.error ?? "submit_failed");
       }
 
       setIsSubmitted(true);
     } catch (err) {
       const message =
-        err instanceof Error && err.message !== 'submit_failed'
+        err instanceof Error && err.message !== "submit_failed"
           ? err.message
-          : '사전예약 접수에 실패했어요. 잠시 후 다시 시도해 주세요.';
+          : "사전예약 접수에 실패했어요. 잠시 후 다시 시도해 주세요.";
       setError(message);
     } finally {
       setIsSubmitting(false);
@@ -65,16 +65,17 @@ export function PreRegister() {
             <div className="flex items-center justify-center gap-3 mb-4">
               <Bell className="w-6 h-6 text-[#FF630F]" />
               <p className="text-[#333333]">
-                {notifyBy === 'email' ? email : phone}
+                {notifyBy === "email" ? email : phone}
               </p>
             </div>
             <p className="text-sm text-[#888888]">
-              위 {notifyBy === 'email' ? '이메일' : '연락처'}로 출시 소식을 전달해 드려요
+              위 {notifyBy === "email" ? "이메일" : "연락처"}로 출시 소식을
+              전달해 드려요
             </p>
           </div>
 
           <button
-            onClick={() => window.location.href = '/'}
+            onClick={() => (window.location.href = "/")}
             className="mt-8 px-8 py-3 text-[#888888] hover:text-[#333333] transition-colors"
           >
             홈으로 돌아가기
@@ -90,7 +91,9 @@ export function PreRegister() {
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#FF630F]/10 rounded-full mb-6">
             <Calendar className="w-5 h-5 text-[#FF630F]" />
-            <span className="text-[#FF630F] font-medium">2026년 8월 출시 예정</span>
+            <span className="text-[#FF630F] font-medium">
+              2026년 8월 출시 예정
+            </span>
           </div>
           <h1 className="text-4xl md:text-5xl text-[#333333] mb-4">
             Lento가 곧 찾아가요
@@ -110,7 +113,9 @@ export function PreRegister() {
                 </div>
                 <div>
                   <p className="text-[#333333] font-medium">출시 즉시 알림</p>
-                  <p className="text-sm text-[#888888]">가장 먼저 Lento를 만나 보세요</p>
+                  <p className="text-sm text-[#888888]">
+                    가장 먼저 Lento를 만나 보세요
+                  </p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -118,8 +123,12 @@ export function PreRegister() {
                   <Check className="w-4 h-4 text-white" />
                 </div>
                 <div>
-                  <p className="text-[#333333] font-medium">프리미엄 기능 30일 무료</p>
-                  <p className="text-sm text-[#888888]">모든 기능을 제한 없이 써 볼 수 있어요</p>
+                  <p className="text-[#333333] font-medium">
+                    프리미엄 기능 30일 무료
+                  </p>
+                  <p className="text-sm text-[#888888]">
+                    모든 기능을 제한 없이 써 볼 수 있어요
+                  </p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -127,8 +136,12 @@ export function PreRegister() {
                   <Check className="w-4 h-4 text-white" />
                 </div>
                 <div>
-                  <p className="text-[#333333] font-medium">런칭 이벤트 참여 기회</p>
-                  <p className="text-sm text-[#888888]">특별한 선물을 준비했어요</p>
+                  <p className="text-[#333333] font-medium">
+                    런칭 이벤트 참여 기회
+                  </p>
+                  <p className="text-sm text-[#888888]">
+                    특별한 선물을 준비했어요
+                  </p>
                 </div>
               </div>
             </div>
@@ -140,31 +153,33 @@ export function PreRegister() {
               <div className="flex gap-2 mb-4">
                 <button
                   type="button"
-                  onClick={() => setNotifyBy('email')}
+                  onClick={() => setNotifyBy("email")}
                   className={`flex-1 px-4 py-2 rounded-xl transition-colors ${
-                    notifyBy === 'email'
-                      ? 'bg-[#FF630F] text-white'
-                      : 'bg-[#F8F9FA] text-[#888888] hover:bg-[#EBF4FF]'
+                    notifyBy === "email"
+                      ? "bg-[#FF630F] text-white"
+                      : "bg-[#F8F9FA] text-[#888888] hover:bg-[#EBF4FF]"
                   }`}
                 >
                   이메일
                 </button>
                 <button
                   type="button"
-                  onClick={() => setNotifyBy('phone')}
+                  onClick={() => setNotifyBy("phone")}
                   className={`flex-1 px-4 py-2 rounded-xl transition-colors ${
-                    notifyBy === 'phone'
-                      ? 'bg-[#FF630F] text-white'
-                      : 'bg-[#F8F9FA] text-[#888888] hover:bg-[#EBF4FF]'
+                    notifyBy === "phone"
+                      ? "bg-[#FF630F] text-white"
+                      : "bg-[#F8F9FA] text-[#888888] hover:bg-[#EBF4FF]"
                   }`}
                 >
                   문자
                 </button>
               </div>
 
-              {notifyBy === 'email' ? (
+              {notifyBy === "email" ? (
                 <div>
-                  <label className="block text-sm text-[#888888] mb-2">이메일</label>
+                  <label className="block text-sm text-[#888888] mb-2">
+                    이메일
+                  </label>
                   <input
                     type="email"
                     value={email}
@@ -176,7 +191,9 @@ export function PreRegister() {
                 </div>
               ) : (
                 <div>
-                  <label className="block text-sm text-[#888888] mb-2">휴대폰 번호</label>
+                  <label className="block text-sm text-[#888888] mb-2">
+                    휴대폰 번호
+                  </label>
                   <input
                     type="tel"
                     value={phone}
@@ -193,7 +210,7 @@ export function PreRegister() {
                 disabled={isSubmitting}
                 className="w-full px-8 py-4 bg-[#FF630F] text-white rounded-xl hover:bg-[#E55A0D] transition-colors shadow-sm font-medium disabled:cursor-not-allowed disabled:opacity-60"
               >
-                {isSubmitting ? '접수 중…' : '사전예약하기'}
+                {isSubmitting ? "접수 중…" : "사전예약하기"}
               </button>
 
               {error && (
@@ -210,7 +227,7 @@ export function PreRegister() {
         <div className="text-center">
           <div className="inline-block bg-white rounded-2xl px-8 py-4 shadow-sm">
             <p className="text-sm text-[#888888] mb-2">현재까지</p>
-            <p className="text-3xl text-[#FF630F] font-medium">312명</p>
+            <p className="text-3xl text-[#FF630F] font-medium">839명</p>
             <p className="text-sm text-[#888888] mt-2">사전예약 참여</p>
           </div>
         </div>
