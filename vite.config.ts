@@ -15,6 +15,9 @@ export default defineConfig(({ mode }) => {
     'NOTION_PROP_INQUIRY_TYPE',
     'NOTION_INQUIRY_TYPE_VALUE',
     'NOTION_PROP_SUBMITTED_DATE',
+    'NOTION_WITHDRAW_DATABASE_ID',
+    'NOTION_WITHDRAW_TYPE_VALUE',
+    'NOTION_PROP_REASON',
   ]) {
     if (env[key]) {
       process.env[key] = env[key]

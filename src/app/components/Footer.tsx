@@ -8,6 +8,7 @@ const links = [
   { to: '/terms', label: '이용약관' },
   { to: '/privacy', label: '개인정보처리방침' },
   { to: '/support', label: '고객센터' },
+  { to: '/withdraw', label: '회원탈퇴' },
 ];
 
 export function Footer() {

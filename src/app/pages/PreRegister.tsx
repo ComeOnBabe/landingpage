@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Calendar, Bell, Check } from "lucide-react";
 
 export function PreRegister() {
@@ -8,6 +8,38 @@ export function PreRegister() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [notifyBy, setNotifyBy] = useState<"email" | "phone">("email");
+  const [count, setCount] = useState<number | null>(null);
+  const [isCountLoading, setIsCountLoading] = useState(true);
+
+  const loadCount = useCallback(async (signal?: AbortSignal) => {
+    try {
+      const response = await fetch("/api/pre-register-count", { signal });
+      const data = (await response.json()) as {
+        ok?: boolean;
+        count?: number;
+        error?: string;
+      };
+
+      if (!response.ok || !data.ok || typeof data.count !== "number") {
+        throw new Error(data.error ?? "count_failed");
+      }
+
+      setCount(data.count);
+    } catch (err) {
+      if (err instanceof DOMException && err.name === "AbortError") return;
+      setCount(null);
+    } finally {
+      if (!signal?.aborted) {
+        setIsCountLoading(false);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    void loadCount(controller.signal);
+    return () => controller.abort();
+  }, [loadCount]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -224,13 +256,21 @@ export function PreRegister() {
           </div>
         </div>
 
-        <div className="text-center">
-          <div className="inline-block bg-white rounded-2xl px-8 py-4 shadow-sm">
-            <p className="text-sm text-[#888888] mb-2">현재까지</p>
-            <p className="text-3xl text-[#FF630F] font-medium">839명</p>
-            <p className="text-sm text-[#888888] mt-2">사전예약 참여</p>
+        {(isCountLoading || count !== null) && (
+          <div className="text-center">
+            <div className="inline-block bg-white rounded-2xl px-8 py-4 shadow-sm">
+              <p className="text-sm text-[#888888] mb-2">현재까지</p>
+              {isCountLoading ? (
+                <div className="mx-auto h-9 w-24 animate-pulse rounded-lg bg-[#F8F9FA]" />
+              ) : (
+                <p className="text-3xl text-[#FF630F] font-medium">
+                  {count?.toLocaleString("ko-KR")}명
+                </p>
+              )}
+              <p className="text-sm text-[#888888] mt-2">사전예약 참여</p>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

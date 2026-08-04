@@ -9,6 +9,7 @@ import { Privacy } from './pages/Privacy';
 import { Support } from './pages/Support';
 import { Notices } from './pages/Notices';
 import { NoticeDetail } from './pages/NoticeDetail';
+import { Withdraw } from './pages/Withdraw';
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/support" element={<Support />} />
+          <Route path="/withdraw" element={<Withdraw />} />
         </Routes>
       </BrowserRouter>
     </div>
