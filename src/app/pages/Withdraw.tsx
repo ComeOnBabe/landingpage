@@ -11,6 +11,16 @@ const REASONS = [
   '기타',
 ];
 
+// 계정을 지우지 않고 기록만 삭제하는 경로. Play 데이터 보안의
+// '데이터 삭제 요청 가능' 신고와 실제 앱 동작을 일치시키기 위해 안내한다.
+const PARTIAL_DELETIONS = [
+  { label: '게시글 · 댓글', path: '메뉴 → 내가 쓴 글 → 내 글 삭제' },
+  { label: '몸상태 기록', path: '몸상태 기록 → 기록 선택 → 삭제' },
+  { label: '일정', path: '캘린더 → 일정 선택 → 삭제' },
+  { label: 'AI라인 분석', path: 'AI라인 → 분석 기록 → 삭제' },
+  { label: '배우자 연결', path: '설정 및 기타 → 배우자 연결 → 연결 해제' },
+];
+
 const NOTICES = [
   '탈퇴 요청은 접수 후 영업일 기준 3일 이내에 처리해 드립니다.',
   '탈퇴가 완료되면 계정 정보와 기록한 데이터는 모두 삭제되며 복구할 수 없습니다.',
@@ -122,6 +132,31 @@ export function Withdraw() {
                 </li>
               ))}
             </ul>
+          </div>
+
+          <div className="mb-8 rounded-3xl bg-white p-6 shadow-sm md:p-8">
+            <h2 className="mb-2 text-xl text-[#333333]">
+              계정은 그대로 두고 일부 기록만 지우고 싶으신가요?
+            </h2>
+            <p className="mb-5 text-sm text-[#888888]">
+              탈퇴하지 않아도 앱에서 직접 삭제하실 수 있습니다.
+            </p>
+            <ul className="space-y-3">
+              {PARTIAL_DELETIONS.map((item) => (
+                <li key={item.label} className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-3">
+                  <span className="min-w-[7rem] text-sm text-[#333333]">{item.label}</span>
+                  <span className="text-sm leading-relaxed text-[#888888]">{item.path}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-5 text-sm leading-relaxed text-[#888888]">
+              앱에서 삭제하기 어려운 경우
+              {' '}
+              <a href="mailto:u.lento25@gmail.com" className="text-[#FF630F] underline">
+                u.lento25@gmail.com
+              </a>
+              으로 요청해 주시면 확인 후 처리해 드립니다.
+            </p>
           </div>
 
           <div className="rounded-3xl bg-white p-6 shadow-sm md:p-8">
